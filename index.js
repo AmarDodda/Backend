@@ -1,11 +1,26 @@
-const express = require('express');
+// import the app module
+const app = require('./app');
 
-const app = express();
+// import the mongoose module
+const mongoose = require('mongoose');
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+// log the message connecting to the MongoDB
+console.log('Connecting to MongoDB...');
 
-app.listen(3001, () => {
-  console.log('Server is running on http://localhost:3001');
-});
+// import config module
+const config = require('./utils/config.js');
+
+mongoose.connect(config.MONGODB_URI)
+  .then(
+    () => {
+      console.log('Connected to MongoDB');
+
+      // start the server
+      app.listen(3001, () => {
+        console.log('Server is running on http://localhost:3001');
+      });
+    }
+  )
+  .catch((error) => {
+    console.error('Error connecting to MongoDB: ', error.message);
+  });
