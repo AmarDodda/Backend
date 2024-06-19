@@ -1,6 +1,6 @@
 // import the express router
 const express = require('express');
-const userController = require('../controllers/usercontroller');
+const userController = require('../controllers/userController');
 // create a new router
 const router = express.Router();
 const auth = require('../middleware/auth');

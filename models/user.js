@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 
 // create a schema
 const userSchema = new mongoose.Schema({
-    username: String,
-    passwordHash: String,
-    name: String,
+    username: { type: String, required: true},
+    password: { type: String, required: true },
+    name: { type: String, required: true },
     createdAt: {
         type: Date,
         default: Date.now
@@ -18,4 +18,4 @@ const userSchema = new mongoose.Schema({
 
 // create a model and export it
 
-module.exports = mongoose.model('User', userSchema, 'users');
+module.exports = mongoose.model('User', userSchema, 'admin');
