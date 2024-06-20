@@ -53,7 +53,6 @@ const submitFeedback = async (request, response) => {
 
     await newFeedback.save();
 
-    // Respond with the created feedback
     response.status(201).json(newFeedback);
   } catch (error) {
     console.error('Error submitting feedback:', error);

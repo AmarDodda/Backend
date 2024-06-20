@@ -1,12 +1,9 @@
-// import the express router
 const express = require('express');
 const userController = require('../controllers/userController');
-// create a new router
 const router = express.Router();
 const auth = require('../middleware/auth');
 
-// define the routes
-// prefix: /users
+
 router.post('/', userController.register); // POST /users
 
 router.get('/', auth.checkAuth, auth.isAdmin, userController.getUsers); // GET /users
@@ -23,5 +20,5 @@ router.get('/:id', auth.checkAuth, auth.isAdmin, userController.getUserById); //
 router.put('/:id', auth.checkAuth, auth.isAdmin, userController.updateUserById); // PUT /users/:id
 router.delete('/:id', auth.checkAuth, auth.isAdmin, userController.deleteUserById); // DELETE /users/:id
 
-// export the router
+
 module.exports = router;

@@ -47,7 +47,6 @@ exports.login = async (request, response) => {
       return response.status(400).json({ message: 'Invalid credentials' });
     }
 
-    // const isMatch = await consumer.comparePassword(password);
     const isMatch=await bcrypt.compare(password,consumer.password)
     if (!isMatch) {
       return response.status(400).json({ message: 'Invalid credentials' });
@@ -57,7 +56,7 @@ exports.login = async (request, response) => {
 
     response.cookie('token', token, {
       httpOnly: true,  // Cookie is accessible only through HTTP(S) requests
-      secure: true,    // Send cookie only over HTTPS in production
+      secure: true,    // Sending cookie only over HTTPS in production
       expires: new Date(Date.now() + 3600000),  // Cookie expires in 1 hour
     });
   
@@ -71,19 +70,6 @@ exports.login = async (request, response) => {
 exports.logout = (request, response) => {
   response.status(200).json({ message: 'Logged out successfully' });
 };
-
-// exports.getConsumerById = async (request, response) => {
-//   try {
-//     const consumerId = request.params.id;
-//     const consumer = await Consumer.findById(consumerId);
-//     if (!consumer) {
-//       return response.status(404).json({ message: "Consumer not found" });
-//     }
-//     response.json({ message: "Consumer found", consumer });
-//   } catch (error) {
-//     response.status(500).json({ message: error.message });
-//   }
-// };
 
 exports.getConsumer = async (request, response) => {
   try {

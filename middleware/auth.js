@@ -36,41 +36,6 @@ const auth = {
             response.status(500).json({ message: error.message });
         }
 
-        // try {
-        //     const token = request.cookies.token;
-
-        //     if (!token) {
-        //         return response.status(401).json({ message: 'Unauthorized' });
-        //     }
-
-        //     const decodedToken = jwt.verify(token, config.JWT_SECRET);
-           
-        //     if (decodedToken.role === 'consumer') {
-        //         const consumer = Consumer.findById(decodedToken.consumerId);
-        //         if (!consumer) {
-        //             return response.status(404).json({ message: 'Consumer not found' });
-        //         }
-
-        //         // Set consumerId and role in the request object
-        //         request.consumerId = decodedToken.consumerId;
-        //         request.role = consumer.role; // Include consumer's role
-
-        //     } else if (decodedToken.role === 'admin') {
-        //         const user = User.findById(decodedToken.id);
-        //         if (!user) {
-        //             return response.status(404).json({ message: 'Admin not found' });
-        //         }
-        //         request.userId = decodedToken.id;
-        //         request.role = 'admin'; // Set role as 'admin' for admins
-
-        //     } else {
-        //         return response.status(403).json({ message: 'Forbidden' });
-        //     }
-
-        //     next();
-        // } catch (error) {
-        //     response.status(500).json({ message: error.message });
-        // }
     },
     
     // middleware to check if the user is an admin

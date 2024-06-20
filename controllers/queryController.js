@@ -8,7 +8,6 @@ const submitQuery = async (req, res) => {
       return response.status(400).json({ message: 'Consumer ID is required' });
     }
 
-    // Create new query
     const query = new Query({
       consumerId: consumerId,
       name,

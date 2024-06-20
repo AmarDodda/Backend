@@ -18,14 +18,8 @@ router.post('/consumerlogin', login);
 // Consumer logout route
 router.post('/consumerlogout', logout);
 
-// router.get('/:id', auth.checkAuth, auth.isAdmin,getConsumerById );
 
 router.get('/profile', consumerAuth.checkAuthConsumer, getConsumer);
-
-// router.get('/consumerregister', (req, res) => {
-//     res.send('This is the consumer registration endpoint');
-//   });
-
 
 
 module.exports = router;

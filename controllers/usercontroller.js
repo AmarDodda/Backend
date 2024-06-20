@@ -8,7 +8,7 @@ const userController = {
     try {
       const { username, password, name } = request.body;
 
-      // Check if the username already exists
+      
       const existingUser = await User.findOne({ username });
       if (existingUser) {
         return response.status(400).json({ message: "Username already exists" });
@@ -26,8 +26,6 @@ const userController = {
 
       console.log('Password hash:', passwordHash);
 
-
-      // Assign role based on conditions (e.g., admin vs. user)
       const role = username === process.env.ADMIN_USERNAME ? "admin" : "user";
 
       const newUser = new User({
@@ -72,7 +70,7 @@ const userController = {
         httpOnly: true,
         sameSite: "none",
         secure: true,
-        expires: new Date(Date.now() + 24 * 60 * 60 * 1000), // 24 hours from now
+        expires: new Date(Date.now() + 24 * 60 * 60 * 1000), 
       });
 
       response.json({ message: "Login successful", token });

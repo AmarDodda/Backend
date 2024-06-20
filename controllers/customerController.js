@@ -1,8 +1,6 @@
-// controllers/customerController.js
 const Customer = require('../models/customer');
 
 const customerController = {
-  // Create a new customer
   createCustomer: async (request, response) => {
     try {
       const { customerId,name, email, purchaseHistory, preferences } = request.body;
@@ -20,7 +18,6 @@ const customerController = {
     }
   },
 
-  // Get all customers
   getAllCustomers: async (request, response) => {
     try {
       const customers = await Customer.find();
@@ -30,7 +27,6 @@ const customerController = {
     }
   },
 
-  // Get a single customer by ID
   getCustomerById: async (request, response) => {
     try {
       const customerId = request.params.id;
@@ -44,7 +40,6 @@ const customerController = {
     }
   },
 
-  // Update a customer by ID
   updateCustomerById: async (request, response) => {
     try {
       const customerId = request.params.id;
@@ -63,7 +58,6 @@ const customerController = {
     }
   },
 
-  // Delete a customer by ID
   deleteCustomerById: async (request, response) => {
     try {
       const customerId = request.params.id;
