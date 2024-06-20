@@ -55,7 +55,7 @@ The backend server runs on `http://localhost:3001` by default. Make sure to conf
 
 ## Models
 
-### User
+### User(admin)
 The User model represents users of the CRM system, including their usernames, passwords, names, roles (user or admin), and the date they were created. This model handles user authentication and role-based access control.
 
 ### Customer
@@ -77,10 +77,10 @@ The Consumer model represents the consumers using the CRM system. It includes th
 ## Middleware
 
 ### Auth Middleware
-The `auth` middleware is used to handle authentication and authorization for users within the CRM system.
+The `auth` middleware is used to handle authentication and authorization for the admin within the CRM system.
 
 1. **checkAuth**:
-   - This function verifies if the user is authenticated by checking for a valid JWT token in the request cookies.
+   - This function verifies if the admin is authenticated by checking for a valid JWT token in the request cookies.
    - If the token is absent or invalid, it returns a 401 Unauthorized error.
    - Upon successful verification, it decodes the token to extract the user ID and attaches it to the request object before calling the next middleware.
 
