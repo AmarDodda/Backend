@@ -11,7 +11,7 @@ const cookieParser = require('cookie-parser');
 const consumerRoutes = require('./routes/consumerRoutes');
 
 app.use(cors({
-    origin: 'https://crm-backend-5-d8g1.onrender.com/',
+    origin: 'https://super-cobbler-668d5d.netlify.app',
     credentials: true
 }));
 
