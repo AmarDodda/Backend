@@ -17,7 +17,7 @@ mongoose.connect(config.MONGODB_URI)
 
       // start the server
       app.listen(3001, () => {
-        console.log('Server is running on https://crm-backend-6-daeb.onrender.com');
+        console.log('Server is running on https://crm-backend-7-cu7u.onrender.com');
       });
     }
   )
