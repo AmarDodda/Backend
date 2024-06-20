@@ -31,6 +31,8 @@ app.use(morgan('dev'));
 
 
 app.use('/users', userRouter);
+app.use('/users/register', userRouter);
+app.use('/login', userRouter);
 app.use('/customers', customerRouter); 
 app.use('/communications', communicationsRouter);
 
