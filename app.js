@@ -18,27 +18,17 @@ app.use(cors({
 app.use((req, res, next) => {
     console.log('Middleware check:', req.originalUrl); 
     next(); 
-  });
-
+});
 
 app.use(cookieParser());
-
-
 app.use(express.json());
-
-
 app.use(morgan('dev'));
 
-
-app.use('/users', userRouter);
-app.use('/users/register', userRouter);
-app.use('/users/login', userRouter);
+app.use('/users', userRouter); 
 app.use('/customers', customerRouter); 
 app.use('/communications', communicationsRouter);
-
 app.use('/feedback', feedbackRouter); 
 app.use('/query', queryRouter); 
 app.use('/api/consumers', consumerRoutes);
-
 
 module.exports = app;
