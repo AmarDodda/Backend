@@ -72,42 +72,34 @@ exports.login = async (request, response) => {
   try {
     const { username, password } = request.body;
 
-    // Find consumer by username
     const consumer = await Consumer.findOne({ username });
     if (!consumer) {
-      return response.status(400).json({ message: 'Consumer not found' });
+      return response.status(400).json({ message: "Consumer not found" });
     }
 
-    // Check if password is provided
     if (!password) {
-      return response.status(400).json({ message: 'Password is required' });
+      return response.status(400).json({ message: "Password is required" });
     }
 
-    // Compare provided password with hashed password in the database
     const isPasswordCorrect = await bcrypt.compare(password, consumer.password);
     if (!isPasswordCorrect) {
-      return response.status(400).json({ message: 'Invalid password' });
+      return response.status(400).json({ message: "Invalid password" });
     }
 
-    // Generate JWT token
     const token = jwt.sign(
-      { id: consumer._id, username: consumer.username, name: consumer.name }, // Include any additional consumer data you want in the token payload
-      config.JWT_SECRET, // Use your JWT secret key from configuration
-      { expiresIn: '24h' } // Token expires in 24 hours
+      { id: consumer._id, username: consumer.username, name: consumer.name },
+      config.JWT_SECRET
     );
 
-    // Set token in HTTP-only secure cookie
-    response.cookie('token', token, {
-      httpOnly: true, // Cookie is accessible only through HTTP(S) requests
-      secure: true, // Sending cookie only over HTTPS in production
-      sameSite: 'none', // Required for cross-site requests
-      expires: new Date(Date.now() + 24 * 60 * 60 * 1000), // Cookie expires in 24 hours
+    response.cookie("token", token, {
+      httpOnly: true,
+      sameSite: "none",
+      secure: true,
+      expires: new Date(Date.now() + 24 * 60 * 60 * 1000), 
     });
 
-    // Respond with success message and token
-    response.json({ message: 'Login successful', token });
+    response.json({ message: "Login successful", token });
   } catch (error) {
-    // Handle any errors that occur during login process
     response.status(500).json({ message: error.message });
   }
 };
