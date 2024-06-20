@@ -11,7 +11,7 @@ const cookieParser = require('cookie-parser');
 const consumerRoutes = require('./routes/consumerRoutes');
 
 app.use(cors({
-    origin: '*',
+    origin: 'https://unique-kitsune-66d961.netlify.app',
     credentials: true
 }));
 
