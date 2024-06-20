@@ -11,7 +11,7 @@ const cookieParser = require('cookie-parser');
 const consumerRoutes = require('./routes/consumerRoutes');
 
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: 'https://crm-backend-5-d8g1.onrender.com/',
     credentials: true
 }));
 
