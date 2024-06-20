@@ -36,7 +36,8 @@ const getFeedbacks = async (request, response) => {
   }
 };
 
+
 module.exports = {
-  FeedbackController,
-  getFeedbacks,
-};
+    FeedbackController,
+    getFeedbacks,
+  };
