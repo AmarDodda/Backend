@@ -81,10 +81,8 @@ exports.login = async (request, response) => {
       return response.status(400).json({ message: "Password is required" });
     }
 
-    const isMatch = await consumer.comparePassword(password);
-
-    // const isPasswordCorrect = await bcrypt.compare(password, consumer.password);
-    if (!isMatch) {
+    const isPasswordCorrect = await bcrypt.compare(password, consumer.password);
+    if (!isPasswordCorrect) {
       return response.status(400).json({ message: "Invalid password" });
     }
 
