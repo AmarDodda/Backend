@@ -3,7 +3,7 @@ const router = express.Router();
 const feedbackController = require('../controllers/FeedbackController');
 
 
-router.post('/', feedbackController.submitFeedback);
+router.post('/', feedbackController.FeedbackController);
 
 router.get('/', feedbackController.getFeedbacks);
 

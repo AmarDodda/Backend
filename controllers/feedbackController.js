@@ -1,6 +1,6 @@
 const Feedback = require('../models/feedback');
 
-const submitFeedback = async (request, response) => {
+const FeedbackController = async (request, response) => {
   try {
     const { consumerId, name, product, rating, comment, date } = request.body;
 
@@ -37,6 +37,6 @@ const getFeedbacks = async (request, response) => {
 };
 
 module.exports = {
-  submitFeedback,
+  FeedbackController,
   getFeedbacks,
 };
