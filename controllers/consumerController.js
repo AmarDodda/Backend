@@ -38,8 +38,6 @@ exports.register = async (request, response) => {
   }
 };
 
-
-
 exports.login = async (request, response) => {
   try {
     const { username, password } = request.body;
