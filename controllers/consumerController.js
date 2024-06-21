@@ -38,35 +38,7 @@ exports.register = async (request, response) => {
   }
 };
 
-// exports.login = async (request, response) => {
-//   try {
-//     const { username, password } = request.body;
 
-//     const consumer = await Consumer.findOne({ username });
-//     if (!consumer) {
-//       return response.status(400).json({ message: 'Invalid credentials' });
-//     }
-
-//     const isMatch = await consumer.comparePassword(password);
-//     // const isMatch=await bcrypt.compare(password,consumer.password)
-//     if (!isMatch) {
-//       return response.status(400).json({ message: 'Invalid credentials' });
-//     }
-
-//     const token = jwt.sign({ id: consumer._id,}, config.JWT_SECRET, { expiresIn: '1h' });
-
-//     response.cookie('token', token, {
-//       httpOnly: true,  // Cookie is accessible only through HTTP(S) requests
-//       secure: true,    // Sending cookie only over HTTPS in production
-//       expires: new Date(Date.now() + 3600000),  // Cookie expires in 1 hour
-//     });
-  
-
-//     response.status(200).json({ token, consumerId: consumer._id });
-//   } catch (error) {
-//     response.status(500).json({ message: 'Error logging in', error: error.message });
-//   }
-// };
 
 exports.login = async (request, response) => {
   try {
@@ -81,7 +53,7 @@ exports.login = async (request, response) => {
       return response.status(400).json({ message: "Password is required" });
     }
 
-    const isPasswordCorrect =bcrypt.compare(password, consumer.password);
+    const isPasswordCorrect =await bcrypt.compare(password, consumer.password);
     if (!isPasswordCorrect) {
       return response.status(400).json({ message: "Invalid password" });
     }
